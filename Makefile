@@ -43,9 +43,9 @@ CCFLAGS +=
 INCLUDES  = -I ./ -I ./reflect -I ./test -I ./test/libjson
 INCLUDES += -I ../include
 
-LIBS  = -L. ../lib/libboost/libboost_system.so
+LIBS  = -L -lutil -lpthread -ldl -lrt 
 LIBS += -L. ../lib/libboost/libboost_serialization.so
-LIBS += -L -lutil -lpthread -ldl -lrt
+LIBS += -L. ../lib/libboost/libboost_system.so
 
 $(PROGRAM):$(OBJS)
 	$(GXX) $(LINK) $^ $(INCLUDE) $(CCFLAGS) $(LIBS) -o $@
